@@ -10,9 +10,8 @@ export async function getStaticProps() {
   const res = await client.getEntries({ content_type: "recipe" });
 
   return {
-    props: {
-      recipes: res.items
-    }
+    props: {recipes: res.items},
+    revalidate: 1
   };
 }
 
@@ -23,13 +22,13 @@ export default function Recipes({ recipes }) {
       {recipes.map((recipe) => (
         <RecipeCard key={recipe.sys.id} recipe={recipe} />
       ))}
-    <style jsx>{`
-        .recipe-list{
+      <style jsx>{`
+        .recipe-list {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          grid-gap: 20px 60px
+          grid-gap: 20px 60px;
         }
-`}</style>
+      `}</style>
     </div>
   );
 }
