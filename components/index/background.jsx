@@ -15,32 +15,28 @@ const Sketch = dynamic(
 let gongB, reverb, delay, amp, vol, strokeSize;
 let playing = false;
 export default (props) => {
-
   let moverA;
   let moverB;
-  let playtext = "Turn Sound Off"
+  let playtext = "Turn Sound Off";
 
   const preload = (p5) => {
-
+    p5.soundFormats("mp3", "wav", "ogg");
+    gongB = p5.loadSound("audio/bowl.wav");
   };
 
   const setup = (p5, canvasParentRef) => {
-    p5.soundFormats("mp3", "wav", "ogg");
-    gongB = p5.loadSound("audio/bowl.wav");
     p5.createCanvas(p5.windowWidth, p5.windowHeight).parent(canvasParentRef);
-    moverA = new Mover(200, 200, 1, p5);
-    moverB = new Mover(600, 200, 2, p5);
+    moverA = new Mover(200, 200, 0.2, p5);
+    moverB = new Mover(400, 200, 0.4, p5);
     reverb = new window.p5.Reverb();
     amp = new window.p5.Amplitude();
-
   };
 
   function toggleSound() {
     if (!playing) {
       gongB.amp(0.2, 0.2);
       playing = true;
-
- } else {
+    } else {
       gongB.amp(0, 0);
       playing = false;
     }
@@ -73,7 +69,12 @@ export default (props) => {
 
   return (
     <div>
-      <Sketch preload={preload} setup={setup} draw={draw} mouseClicked={toggleSound} />
+      <Sketch
+        preload={preload}
+        setup={setup}
+        draw={draw}
+        mouseClicked={toggleSound}
+      />
     </div>
   );
 };
