@@ -24,13 +24,13 @@ export default (props) => {
   };
 
   const setup = (p5, canvasParentRef) => {
-    // p5.soundFormats("mp3", "wav", "ogg");
-    // gongB = p5.loadSound("audio/bowl.wav");
+    p5.soundFormats("mp3", "wav", "ogg");
+    gongB = p5.loadSound("audio/bowl.wav");
     p5.createCanvas(p5.windowWidth, p5.windowHeight).parent(canvasParentRef);
     moverA = new Mover(100, 200, 0.2, p5);
     moverB = new Mover(300, 200, 0.4, p5);
-    // reverb = new window.p5.Reverb();
-    // amp = new window.p5.Amplitude();
+    reverb = new window.p5.Reverb();
+    amp = new window.p5.Amplitude();
   };
 
   // function toggleSound() {
@@ -58,7 +58,7 @@ export default (props) => {
     moverA.edges(p5);
     moverA.update();
     moverA.collide(moverB, p5, reverb, delay);
-    moverA.show(p5, 0, strokeSize, 50 * vol, 50);
+    moverA.show(p5, 255, strokeSize, 50 * vol, 50);
 
     moverB.applyForce(weightB);
     moverB.applyForce(wind);
