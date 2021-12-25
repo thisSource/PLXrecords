@@ -45,8 +45,8 @@ export default (props) => {
 
   const draw = (p5) => {
     p5.background(255, 214, 255);
-    // vol = amp.getLevel() * 20;
-    // strokeSize = amp.getLevel() * 30;
+    vol = amp.getLevel() * 20;
+    strokeSize = amp.getLevel() * 30;
 
     let gravity = p5.createVector(0, 0.02);
     let wind = p5.createVector(0.01, 0);
@@ -58,7 +58,7 @@ export default (props) => {
     moverA.edges(p5);
     moverA.update();
     moverA.collide(moverB, p5, reverb, delay);
-    moverA.show(p5, 255, strokeSize, 50 * vol, 50);
+    moverA.show(p5, 0, strokeSize, 50 * vol, 50);
 
     moverB.applyForce(weightB);
     moverB.applyForce(wind);
@@ -117,9 +117,9 @@ class Mover {
       let approachVector = thisToOtherNormal.copy().setMag(approachSpeed);
       this.vel.sub(approachVector);
       other.vel.add(approachVector);
-      // gongB.rate(p5.random(0.1, 0.2));
-      // gongB.amp(0.2, 0.2);
-      // gongB.play();
+      gongB.rate(p5.random(0.1, 0.2));
+      gongB.amp(0.2, 0.2);
+      gongB.play();
     }
   }
 
