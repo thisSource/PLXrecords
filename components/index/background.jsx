@@ -58,7 +58,7 @@ export default (props) => {
     moverA.edges(p5);
     moverA.update();
     moverA.collide(moverB, p5, reverb, delay);
-    moverA.show(p5, 255, strokeSize, 50 * vol, 50);
+    moverA.show(p5, 0, strokeSize, 50 * vol, 50);
 
     moverB.applyForce(weightB);
     moverB.applyForce(wind);
