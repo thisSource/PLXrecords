@@ -27,8 +27,8 @@ export default (props) => {
   const setup = (p5, canvasParentRef) => {
  
     p5.createCanvas(p5.windowWidth, p5.windowHeight).parent(canvasParentRef);
-    moverA = new Mover(100, 200, 1, p5);
-    moverB = new Mover(300, 200, 2, p5);
+    moverA = new Mover(200, 200, 1, p5);
+    moverB = new Mover(600, 200, 2, p5);
     reverb = new window.p5.Reverb();
     amp = new window.p5.Amplitude();
   };
