@@ -21,11 +21,12 @@ export default (props) => {
   let playtext = "Turn Sound Off"
 
   const preload = (p5) => {
-    p5.soundFormats("mp3", "wav", "ogg");
-    gongB = p5.loadSound("audio/bowl.wav");
+
   };
 
   const setup = (p5, canvasParentRef) => {
+    p5.soundFormats("mp3", "wav", "ogg");
+    gongB = p5.loadSound("audio/bowl.wav");
     p5.createCanvas(p5.windowWidth, p5.windowHeight).parent(canvasParentRef);
     moverA = new Mover(200, 200, 1, p5);
     moverB = new Mover(600, 200, 2, p5);
