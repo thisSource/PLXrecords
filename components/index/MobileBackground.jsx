@@ -12,32 +12,24 @@ const Sketch = dynamic(
   }
 );
 
-let gongB, reverb, delay, amp, vol, strokeSize;
 
 export default (props) => {
   let moverA;
   let moverB;
 
-  const preload = (p5) => {
-    p5.soundFormats("mp3", "wav", "ogg");
-    gongB = p5.loadSound("audio/bowl.wav");
-  };
+
 
   const setup = (p5, canvasParentRef) => {
  
     p5.createCanvas(p5.windowWidth, p5.windowHeight).parent(canvasParentRef);
-    moverA = new Mover(200, 200, 1, p5);
-    moverB = new Mover(600, 200, 2, p5);
-    reverb = new window.p5.Reverb();
-    amp = new window.p5.Amplitude();
+    moverA = new Mover(70, 200, 0.5, p5);
+    moverB = new Mover(200, 200, 1, p5);
+
   };
 
 
   const draw = (p5) => {
-    p5.background(255, 214, 255);
-    vol = amp.getLevel() * 20;
-    strokeSize = amp.getLevel() * 30;
-
+    p5.background(255, 235, 204);
     let gravity = p5.createVector(0, 0.02);
     let wind = p5.createVector(0.01, 0);
     let weightA = window.p5.Vector.mult(gravity, moverA.mass);
@@ -47,21 +39,20 @@ export default (props) => {
     moverA.applyForce(wind);
     moverA.edges(p5);
     moverA.update();
-    moverA.collide(moverB, p5, reverb, delay);
-    moverA.show(p5, 255, strokeSize, 50 * vol, 50);
+    moverA.collide(moverB, p5);
+    moverA.show(p5, 255);
 
     moverB.applyForce(weightB);
     moverB.applyForce(wind);
     moverB.edges(p5);
     moverB.update();
-    moverB.collide(moverA, p5, reverb, delay);
-    moverB.show(p5, 20, strokeSize, 50 * vol, 200);
+    moverB.collide(moverA, p5);
+    moverB.show(p5, 20);
   };
 
   return (
     <div>
       <Sketch
-        preload={preload}
         setup={setup}
         draw={draw}
       />
@@ -106,9 +97,6 @@ class Mover {
       let approachVector = thisToOtherNormal.copy().setMag(approachSpeed);
       this.vel.sub(approachVector);
       other.vel.add(approachVector);
-      gongB.rate(p5.random(0.1, 0.2));
-      gongB.amp(0.2, 0.2);
-      gongB.play();
     }
   }
 
@@ -128,13 +116,9 @@ class Mover {
     }
   }
 
-  show(p5, color, strokeW, s, strokecolor) {
+  show(p5, color) {
     p5.noStroke();
     p5.fill(color);
     p5.ellipse(this.pos.x, this.pos.y, this.r * 2);
-    p5.stroke(strokecolor);
-    p5.strokeWeight(strokeW);
-    p5.noFill();
-    p5.ellipse(this.pos.x, this.pos.y, (this.r - s * 5) * 2);
   }
 }

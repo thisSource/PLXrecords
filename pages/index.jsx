@@ -1,10 +1,19 @@
 import Background from "../components/index/background";
+import MobileBackground from "../components/index/MobileBackground";
+import React, { useEffect, useState } from "react";
 
-export default function Index() {
+function Index() {
+  const [isMobile, setIsMobile] = useState(true);
+  useEffect(() => {
+    window.innerWidth < 600 ? setIsMobile(true) : setIsMobile(false);
+  }, []);
+
   return (
     <div>
       {/* <p className="fixed top-1/2 -left-24 transform -rotate-90 text-sm">Click anywhere to start and stop sound</p> */}
-      <Background />
+      {isMobile ? <MobileBackground /> : <Background />}
     </div>
   );
 }
+
+export default Index;
