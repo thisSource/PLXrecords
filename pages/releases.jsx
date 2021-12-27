@@ -20,7 +20,7 @@ export async function getStaticProps() {
 export default function Releases({ artists }) {
   return (
     <div className="pt-40 bg-gray-300">
-      <div className="grid lg:grid-cols-2 md:grid-cols-2 gap-24 lg:mx-40">
+      <div className="grid lg:grid-cols-2 md:grid-cols-2 gap-28 lg:mx-36">
         {artists.map((artist) => (
           <ArtistCard key={artist.sys.id} artist={artist} />
         ))}

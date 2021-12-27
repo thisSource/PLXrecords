@@ -16,11 +16,11 @@ const navigations = [
     href: "/releases",
     classes: "text-black text-2xl font-semibold hover:underline cursor-pointer"
   },
-  {
-    name: "Shop",
-    href: "/shop",
-    classes: "text-black text-2xl font-semibold hover:underline cursor-pointer"
-  }
+  // {
+  //   name: "Shop",
+  //   href: "/shop",
+  //   classes: "text-black text-2xl font-semibold hover:underline cursor-pointer"
+  // }
   // {
   //   name: "plxplxplx.com",
   //   href: "/plx",
