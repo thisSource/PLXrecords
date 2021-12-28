@@ -19,10 +19,8 @@ function ArtistCard({ artist }) {
     <div className="bg-red-100 text-gray-700 mb-10 border-8 border-blue-200">
       <Image
         src={"https:" + thumbnail.fields.file.url}
-        width={700}
-        height={700}
-        // width={thumbnail.fields.file.details.image.width}
-        // height={thumbnail.fields.file.details.image.height}
+        width={thumbnail.fields.file.details.image.width}
+        height={thumbnail.fields.file.details.image.height}
       />
       <div className="mt-4">
         <span className="text-xl ml-4">{name}</span>
