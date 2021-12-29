@@ -25,7 +25,7 @@ function ArtistCard({ artist }) {
       <div className="mt-4">
         <span className="text-xl ml-4">{name}</span>
         <span className="text-xl"> // {releaseName}</span>
-        <p className="text-xl"> // {year}</p>
+        <p className="text-xl ml-4">{year}</p>
         <p className="h-32 mx-4">{shortInfo}</p>
         {spotify != undefined ? (
           <iframe
