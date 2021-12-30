@@ -10,10 +10,11 @@ function ArtistCard({ artist }) {
     releaseName,
     year,
     website,
-    spotify
+    spotify,
+    bandcamp
   } = artist.fields;
 
-  console.log(spotify);
+  console.log(bandcamp);
 
   return (
     <div className="bg-red-100 text-gray-700 mb-10 border-8 border-blue-200">
@@ -27,6 +28,31 @@ function ArtistCard({ artist }) {
         <span className="text-xl"> // {releaseName}</span>
         <p className="text-xl ml-4">{year}</p>
         <p className="h-32 mx-4">{shortInfo}</p>
+
+        {bandcamp != undefined ? (
+          <div>
+            <a
+              target="_blank"
+              href={`${bandcamp}`}
+              rel="noopener noreferrer"
+              className="flex flex-col items-center bg-red-100 border-2 border-black border-dashed py-4 mb-4 mx-10 rounded-md text-xl font-semibold hover:bg-gray-300"
+            >
+              visit {name} on Bandcamp
+            </a>
+          </div>
+        ) : (
+          <div>
+            <a
+              target="_blank"
+              href={`https://plxrecords.bandcamp.com/`}
+              rel="noopener noreferrer"
+              className="flex flex-col items-center bg-red-100 border-2 border-black border-dashed py-4 mb-4 mx-10 rounded-md text-xl font-semibold hover:bg-gray-300"
+            >
+              visit PLX Records on Bandcamp
+            </a>
+          </div>
+        )}
+
         {spotify != undefined ? (
           <iframe
             src={`${spotify}`}
