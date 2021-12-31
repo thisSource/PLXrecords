@@ -9,15 +9,14 @@ function Logo() {
     <div className="flex flex-row items-center justify-evenly mt-4">
       <div>
         {/* <Link href="/"> */}
-          <a className="mt-5 mb-3 cursor-pointer" onClick={() => window.location.href = "/"}>
+          <a className="mt-5 mb-3 ml-4 cursor-pointer" onClick={() => window.location.href = "/"}>
             <Image
-              src={"/logos/logobw.png"}
+              src={"/logos/recordshuvud.png"}
               width="70"
-              height="70"
+              height="85"
               alt="logo"
             />
           </a>
-        {/* </Link> */}
       </div>
     </div>
   );
