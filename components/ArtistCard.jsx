@@ -11,7 +11,8 @@ function ArtistCard({ artist }) {
     year,
     website,
     spotify,
-    bandcamp
+    bandcamp,
+    bandcampPlayer
   } = artist.fields;
 
   console.log(bandcamp);
@@ -27,6 +28,17 @@ function ArtistCard({ artist }) {
         <span className="text-xl ml-4">{name}</span>
         <span className="text-xl"> // {releaseName}</span>
         <p className="text-xl ml-4">{year}</p>
+
+        {website != undefined ? (
+          <div className="mx-4 my-1 font-semibold hover:underline">
+            <a target="_blank" href={`${website}`} rel="noopener noreferrer">
+              {website}
+            </a>
+          </div>
+        ) : (
+          <div className="my-1 invisible">placeholder text</div>
+        )}
+
         <p className="h-32 mx-4">{shortInfo}</p>
 
         {bandcamp != undefined ? (
@@ -57,11 +69,23 @@ function ArtistCard({ artist }) {
           <iframe
             src={`${spotify}`}
             width="100%"
-            height="170"
+            height="200"
             frameBorder="0"
             allowfullscreen=""
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           ></iframe>
+        ) : bandcampPlayer != undefined ? (
+          <div className="lg:ml-4">
+            <iframe
+              src={`${bandcampPlayer}`}
+              seamless
+              width="100%"
+              height="200"
+              frameBorder="0"
+              allowfullscreen=""
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            ></iframe>
+          </div>
         ) : (
           <div>
             <a

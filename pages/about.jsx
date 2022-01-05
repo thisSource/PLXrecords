@@ -6,6 +6,8 @@ function About() {
       <p className="absolute lg:my-80 my-60 lg:mx-80 p-10 bg-yellow-200">
         Genre- and norm breaking music, made and performed by boundary pushing
         artists.
+        <p className="mt-8 font-semibold">records@plxplxplx.com</p>
+
         <a
           target="_blank"
           href="https://www.instagram.com/plxrecords/"

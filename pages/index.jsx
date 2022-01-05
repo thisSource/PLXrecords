@@ -12,9 +12,14 @@ function Index() {
 
   return (
     <div>
-            
-      {isMobile ? <MobileBackground /> : <div> <Clicked /> <Background /> </div>}
-
+      {isMobile ? (
+        <MobileBackground />
+      ) : (
+        <div>
+          {" "}
+          <Clicked /> <Background />{" "}
+        </div>
+      )}
     </div>
   );
 }
