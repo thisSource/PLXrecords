@@ -83,7 +83,7 @@ const OceansBackgroundMobile = () => {
       .parent(canvasParentRef);
 
     // p5, xPos, yPos, xSpeed, ySpeed, radius, r, g, b
-    let sizeAdjustor = 0.5;
+    let sizeAdjustor = 1;
     ocean = new Ocean(
       p5,
       100,
