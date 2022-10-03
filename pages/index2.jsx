@@ -7,6 +7,7 @@ import OceansBackgroundMobile from "../components/index/OceansBackgroundMobile";
 
 function Index() {
   const [isMobile, setIsMobile] = useState(true);
+  
 
   useEffect(() => {
     window.innerWidth < 600 ? setIsMobile(true) : setIsMobile(false);
