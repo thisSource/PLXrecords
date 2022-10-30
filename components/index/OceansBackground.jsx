@@ -91,8 +91,8 @@ const OceansBackground = () => {
     );
 
 
-    mySound = p5.loadSound("audio/zeldaslow1.mp3", () => setSoundLoading(false));
-    // mySound2 = p5.loadSound("audio/Singular Över Loop 2.mp3", () => setSoundLoading(false));
+    mySound = p5.loadSound("audio/Singular Över Loop 1.mp3", () => setSoundLoading(false));
+    mySound2 = p5.loadSound("audio/Singular Över Loop 2.mp3", () => setSoundLoading(false));
 
     fft = new window.p5.FFT(0.1, 16);
   };
@@ -100,11 +100,11 @@ const OceansBackground = () => {
   const togglePlay = () => {
     if (mySound.isPlaying()) {
       mySound.pause();
-      // mySound2.pause()
+      mySound2.pause()
       setIsPlaying(false);
     } else {
       mySound.play();
-      // mySound2.play()
+      mySound2.play()
       setIsPlaying(true);
     }
   };
