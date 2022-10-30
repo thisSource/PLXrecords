@@ -14,50 +14,12 @@ const Sketch = dynamic(
 );
 
 let mySound;
+let mySound2;
+
 let cnv;
 let ocean, oceanB, oceanC, oceanD, oceanE;
-
 let fft;
 let spectrum;
-
-const draw = (p5) => {
-  p5.background(200);
-  spectrum = fft.analyze();
-  ocean.isOver(p5, "The Pacific Ocean");
-  ocean.update(p5);
-  ocean.surface(spectrum[4] / 2000 + 0.001, 0.0);
-  ocean.display(p5, spectrum[4]);
-  ocean.edges(p5);
-
-  // oceanB.collider(p5, ocean)
-  oceanB.isOver(p5, "The Atlantic Ocean");
-  oceanB.update(p5);
-  oceanB.surface(spectrum[3] / 2000 + 0.001, 0.0);
-  oceanB.display(p5, spectrum[3]);
-  oceanB.edges(p5);
-
-  // ocean.collider(p5, oceanB)
-  oceanC.isOver(p5, "The Indian Ocean");
-  oceanC.update(p5);
-  oceanC.surface(spectrum[2] / 7000 + 0.001, 0.0);
-  oceanC.display(p5);
-  oceanC.edges(p5);
-
-  // oceanB.collider(p5, ocean)
-  oceanD.isOver(p5, "The Southern Ocean");
-  oceanD.update(p5);
-  oceanD.surface(spectrum[1] / 10000 + 0.001, 0.0);
-  oceanD.display(p5);
-  oceanD.edges(p5);
-
-  // oceanB.collider(p5, ocean)
-  oceanE.isOver(p5, "The Arctic Ocean ");
-  oceanE.update(p5);
-  oceanE.surface(spectrum[0] / 10000 + 0.001, 0.0);
-  oceanE.display(p5);
-  oceanE.edges(p5);
-};
-
 const mouseMoved = (p5) => {};
 
 const touchMoved = (p5) => {};
@@ -79,8 +41,8 @@ const OceansBackground = () => {
       p5.random(-0.2, 0.2),
       p5.random(-0.2, 0.2),
       168 * 3,
-      40,
-      10,
+      0,
+      150,
       250
     );
     oceanB = new Ocean(
@@ -90,9 +52,9 @@ const OceansBackground = () => {
       p5.random(-0.2, 0.2),
       p5.random(-0.2, 0.2),
       85 * 3,
-      40,
-      20,
-      200
+      100,
+      100,
+      255
     );
     oceanC = new Ocean(
       p5,
@@ -101,9 +63,9 @@ const OceansBackground = () => {
       p5.random(-0.2, 0.2),
       p5.random(-0.2, 0.2),
       71 * 3,
-      40,
-      30,
-      155
+      50,
+      150,
+      255
     );
     oceanD = new Ocean(
       p5,
@@ -112,9 +74,9 @@ const OceansBackground = () => {
       p5.random(-0.2, 0.2),
       p5.random(-0.2, 0.2),
       21 * 3,
-      40,
-      0,
-      200
+      2,
+      2,
+      255
     );
     oceanE = new Ocean(
       p5,
@@ -123,21 +85,26 @@ const OceansBackground = () => {
       p5.random(-0.2, 0.2),
       p5.random(-0.2, 0.2),
       15 * 3,
-      40,
-      90,
-      200
+      150,
+      150,
+      255
     );
 
-    mySound = p5.loadSound("audio/sati.mp3", () => setSoundLoading(false));
-    fft = new window.p5.FFT(0.9, 16);
+
+    mySound = p5.loadSound("audio/zeldaslow1.mp3", () => setSoundLoading(false));
+    // mySound2 = p5.loadSound("audio/Singular Över Loop 2.mp3", () => setSoundLoading(false));
+
+    fft = new window.p5.FFT(0.1, 16);
   };
 
   const togglePlay = () => {
     if (mySound.isPlaying()) {
       mySound.pause();
+      // mySound2.pause()
       setIsPlaying(false);
     } else {
       mySound.play();
+      // mySound2.play()
       setIsPlaying(true);
     }
   };
@@ -147,6 +114,53 @@ const OceansBackground = () => {
       "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform",
     buttonText: "text-xl p-4 text-gray-700 sm:hover:text-gray-600 lg:text-2xl",
   };
+
+  let wave;
+
+const draw = (p5) => {
+  p5.background(200);
+  // spectrum = fft.analyze();
+  
+  spectrum = fft.analyze()
+  let spectrumAdjustomr = 4000
+  // spectrum = fft.getEnergy("treble");
+
+  console.log(spectrum)
+  ocean.isOver(p5, "The Pacific Ocean");
+  ocean.update(p5);
+  ocean.surface(spectrum[5] /spectrumAdjustomr + 0.001, 0.0);
+  ocean.display(p5);
+  ocean.edges(p5);
+
+  // oceanB.collider(p5, ocean)
+  oceanB.isOver(p5, "The Atlantic Ocean");
+  oceanB.update(p5);
+  oceanB.surface(spectrum[4] / spectrumAdjustomr + 0.001, 0.0);
+  oceanB.display(p5);
+  oceanB.edges(p5);
+
+  // ocean.collider(p5, oceanB)
+  oceanC.isOver(p5, "The Indian Ocean");
+  oceanC.update(p5);
+  oceanC.surface(spectrum[3] / spectrumAdjustomr + 0.001, 0.0);
+  oceanC.display(p5);
+  oceanC.edges(p5);
+
+  // oceanB.collider(p5, ocean)
+  oceanD.isOver(p5, "The Southern Ocean");
+  oceanD.update(p5);
+  oceanD.surface(spectrum[2] / spectrumAdjustomr + 0.001, 0.0);
+  oceanD.display(p5);
+  oceanD.edges(p5);
+
+  // oceanB.collider(p5, ocean)
+  oceanE.isOver(p5, "The Arctic Ocean ");
+  oceanE.update(p5);
+  oceanE.surface(spectrum[1] / spectrumAdjustomr + 0.001, 0.0);
+  oceanE.display(p5);
+  oceanE.edges(p5);
+};
+
 
   return (
     <div>
